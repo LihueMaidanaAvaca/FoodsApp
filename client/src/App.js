@@ -1,10 +1,24 @@
 import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Home} from './components/home/Home.jsx';
+import React from 'react';
+import { Landing } from './components/landing/Landing';
+// import  Adopt from './components/adopt/Adopt'
+import Detail from './components/detail/Detail'
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Food</h1>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component= {Landing}/>
+          <Route path = '/home' component= {Home}/>
+          <Route path = '/new' component= {NewRecipe}/>
+          <Route path = '/:id' component= {Detail}/>
+         </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
