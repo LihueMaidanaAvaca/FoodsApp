@@ -1,9 +1,9 @@
-import {GET_RECIPES } from '../actions';
+import {GET_RECIPES, GET_NAMERECIPES, SET_NAME, GET_TYPES, FILTER_BY_TYPE, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_SCORE, GET_DETAILS } from '../actions';
 
 
 const initialState = {
    recipes: [],
-    
+   types: [] 
    };
 
    export default function rootReducer(state = initialState, action) {
@@ -13,6 +13,11 @@ const initialState = {
               recipes: action.payload,
               
              };
+      case GET_TYPES:
+               return{
+                 ...state, 
+                 types: action.payload                                          
+             }       
     default:
          return state;
     }}   

@@ -3,22 +3,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRecipes } from '../../actions';
 import { Link } from 'react-router-dom';
 import Card from '../cards/Cards';
+import Paginate from '../paginate/Paginate';
+import styles from './Home.module.css'
 
 export function Home(){
     const dispatch= useDispatch()
     const recipes = useSelector((state) => state.recipes)
     const [orden, setOrden] = useState('')
     const [loading, setLoading] = useState(true)
-    // const [currentPage, setCurrentPage] = useState(1)
-    // // const [recipePerPage, setRecipePerPage] = useState(8)
-    // const indexOfLastRecipe = currentPage * recipesPerPage
-    // const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
-    // const currentRecipe = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [recipesPerPage, setRecipesPerPage] = useState(9)
+    const indexOfLastRecipe = currentPage * recipesPerPage
+    const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
+    const currentRecipe = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
     const types = useSelector((state) => state.types)
     
-    // const paginate = (pageNumber) => {
-    //     setCurrentPage(pageNumber)
-    // }
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     useEffect(()=>{
         dispatch(getRecipes());
@@ -32,7 +34,7 @@ export function Home(){
 
     return(
         <div >
-            <h1>app food</h1>
+            <h1>LoveRecipe</h1>
             <button ><Link to= '/new'>new recipe</Link></button>
             <button onClick={e=> {handleClick(e)}}>Reload foods</button>
             <div>
@@ -55,16 +57,16 @@ export function Home(){
                     <option value= 'created'>news</option>
                     <option value= 'api'>api</option>
                 </select>
-                {/* <SearchBar/>
+                {/* <SearchBar/> */}
                 <Paginate
-                dogsPerPage= {dogsPerPage}
-                allDogs={allDogs.length}
+                recipesPerPage= {recipesPerPage}
+                recipes={recipes.length}
                 paginate= {paginate}
-                />   */}
+                />  
  
-               <div  >
+               <div className={`${styles.cards}`} >
  
-                { !loading ? recipes.map(recipe=>{
+                { !loading ? currentRecipe.map(recipe=>{
                     console.log('onerecipe', recipe);
                     return (
                         <div key={recipe.id}>
