@@ -64,16 +64,16 @@ router.get('/recipes', async (req, res) => {
 })
 
 router.get('/types', async (req, res)=>{
-    const typesUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=ecce4fd21f8b43138d926e3c808887b2&addRecipeInformation=true&number=200')
+    const typesUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=ecce4fd21f8b43138d926e3c808887b2&addRecipeInformation=true&number=100')
     const typesApi = typesUrl.data.results.map(el=> {if(el.diets.length===0)return el.diets=['vegan'];else return el.diets})
     
-    
+    let dietsStings= []
     const dietEach = typesApi.map(diet => {
-        for (let i = 0; i < diet.length; i++) return diet[i]})
+        for (let i = 0; i < diet.length; i++) dietsStings.push(diet[i])})
         
-        console.log(dietEach, 'esto viene de la api')
+        console.log(dietsStings, 'esto viene de la ap')
         
-    dietEach.forEach(diet => {
+    dietsStings.forEach(diet => {
         Type.findOrCreate({
             where: { name: diet}
         })
