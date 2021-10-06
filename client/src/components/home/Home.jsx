@@ -4,6 +4,7 @@ import { getRecipes, filterByType, filterCreated, getTypes, orderByName, orderBy
 import { Link } from 'react-router-dom';
 import Card from '../cards/Cards';
 import Paginate from '../paginate/Paginate';
+import SearchBar from '../searchbar/Searchbar';
 import styles from './Home.module.css'
 
 export function Home(){
@@ -83,7 +84,7 @@ export function Home(){
                     <option value= 'created'>news</option>
                     <option value= 'api'>api</option>
                 </select>
-                {/* <SearchBar/> */}
+                <SearchBar/>
                 <Paginate
                 recipesPerPage= {recipesPerPage}
                 recipes={recipes.length}
