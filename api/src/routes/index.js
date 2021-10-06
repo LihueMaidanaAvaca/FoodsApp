@@ -82,6 +82,17 @@ router.get('/types', async (req, res)=>{
     res.send(allDiets);    
 })
 
+router.get('/recipes/:id', async (req, res)=>{
+    const id= req.params.id;
+    const recipesTotal = await getAllRecipe()
+    if(id){
+        let recipeID = await recipesTotal.filter(el => el.id == id)
+        recipeID.length?
+        res.status(200).json(recipeID) :
+        res.status(404).send('this is not found :(')
+    }
+})
+
 
 module.exports = router;
 

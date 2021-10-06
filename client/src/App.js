@@ -4,7 +4,7 @@ import {Home} from './components/home/Home.jsx';
 import React from 'react';
 import { Landing } from './components/landing/Landing';
 // import  Adopt from './components/adopt/Adopt'
-// import Detail from './components/detail/Detail'
+import Details from './components/details/Details'
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/" component= {Landing}/>
           <Route path = '/home' component= {Home}/>
           {/* <Route path = '/new' component= {NewRecipe}/> */}
-          {/* <Route path = '/:id' component= {Detail}/> */}
+          <Route path = '/:id' component= {Details}/>
          </Switch>
       </div>
     </BrowserRouter>

@@ -4,7 +4,8 @@ import {GET_RECIPES, GET_NAMERECIPES, SET_NAME, GET_TYPES, FILTER_BY_TYPE, FILTE
 const initialState = {
    recipes: [],
    allRecipes: [],
-   types: []
+   types: [],
+   detail: []
    };
 
    export default function rootReducer(state = initialState, action) {
