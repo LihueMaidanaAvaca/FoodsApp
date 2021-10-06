@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipes, filterByType, getTypes, orderByName } from '../../actions';
+import { getRecipes, filterByType, filterCreated, getTypes, orderByName, orderByScore } from '../../actions';
 import { Link } from 'react-router-dom';
 import Card from '../cards/Cards';
 import Paginate from '../paginate/Paginate';
@@ -36,9 +36,20 @@ export function Home(){
         dispatch(filterByType(e.target.value))
     }
 
+    function handleFilterCreated(e){
+        dispatch(filterCreated(e.target.value))
+    }
+
     function handleSort(e){
         e.preventDefault();
         dispatch(orderByName(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordered ${e.target.value}`)    
+    }
+
+    function handleSortScore(e){
+        e.preventDefault();
+        dispatch(orderByScore(e.target.value))
         setCurrentPage(1);
         setOrden(`Ordered ${e.target.value}`)    
     }
@@ -57,9 +68,9 @@ export function Home(){
                     <option value= 'asd'>ASCENDING</option>
                     <option value= 'des'>DESCENDING</option>
                 </select>
-                <select >
-                    <option value= 'best'>BEST</option>
-                    <option value= 'worst'>WORST</option>
+                <select onChange= {e => handleSortScore(e)}>
+                    <option value= 'asd'>BEST</option>
+                    <option value= 'des'>WORST</option>
                 </select>
                 <select onChange={(e)=>handleFilterType(e)}>
                      <option name='type' key={'a'}>TypeDiets</option>
@@ -67,8 +78,8 @@ export function Home(){
                          <option name='types'key={i} value={d.name}>{d.name}</option>
                      ))}
                  </select>
-                <select >
-                    <option value= 'recipes'>todas</option>
+                <select onChange={(e)=>handleFilterCreated(e)}>
+                    <option value= 'recipes'>Alls</option>
                     <option value= 'created'>news</option>
                     <option value= 'api'>api</option>
                 </select>
