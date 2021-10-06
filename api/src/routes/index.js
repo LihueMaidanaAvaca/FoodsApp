@@ -11,7 +11,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async () => {
-    const apiUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=2a70b6686cca46cbaabce1272ce69f53&addRecipeInformation=true&number=100');
+    const apiUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=f797dcc2e22f4f8ba4c03422bbd964fc&addRecipeInformation=true&number=100');
     const apiInfo = await apiUrl.data.results.map(recipe => {
         return {
             title: recipe.title,
@@ -64,7 +64,7 @@ router.get('/recipes', async (req, res) => {
 })
 
 router.get('/types', async (req, res)=>{
-    const typesUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=2a70b6686cca46cbaabce1272ce69f53&addRecipeInformation=true&number=100')
+    const typesUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=f797dcc2e22f4f8ba4c03422bbd964fc&addRecipeInformation=true&number=100')
     const typesApi = typesUrl.data.results.map(el=> {if(el.diets.length===0)return el.diets=['vegan'];else return el.diets})
     
     let dietsStings= []
@@ -91,6 +91,38 @@ router.get('/recipes/:id', async (req, res)=>{
         res.status(200).json(recipeID) :
         res.status(404).send('this is not found :(')
     }
+})
+
+router.post('/recipe', async (req, res) =>{
+    let{
+        title,
+        summary,
+        score,
+        healthScore, 
+        image,
+        created,
+        steps,
+        types
+    } = req.body
+
+    let recipeCreated = await Recipe.create({
+        title,
+        summary,
+        score,
+        healthScore,
+        image,
+        steps,
+        created
+    })
+    
+    types.map(async t=> {
+        let tDB = await Type.findOrCreate({
+            where: { name : t}
+        })
+        console.log('aca estas mas cerca del error', tDB)
+    recipeCreated.addType( tDB[0]) })
+    console.log('esto y ya esta' ,recipeCreated)
+    res.json(recipeCreated)
 })
 
 
