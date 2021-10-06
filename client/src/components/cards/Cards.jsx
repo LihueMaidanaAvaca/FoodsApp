@@ -1,7 +1,7 @@
 import React from "react";
 // import style from './Card.module.css'
 
-export default function Card({title, image}) {
+export default function Card({title, image, Diets}) {
     return (
         <div >
             
@@ -9,7 +9,7 @@ export default function Card({title, image}) {
             <h3>{title}</h3>
             {/* <label>W min:{weightmin} max:{weightmax}</label> */}
         
-            {/* {temp?.map(t=> <div key={t.name}>{t.name}</div>)} */}
+            {Diets?.map(t=> <div key={t.name}>{t.name}</div>)}
            
         </div>
     )

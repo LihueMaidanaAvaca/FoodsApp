@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipes } from '../../actions';
+import { getRecipes, filterByType, getTypes, orderByName } from '../../actions';
 import { Link } from 'react-router-dom';
 import Card from '../cards/Cards';
 import Paginate from '../paginate/Paginate';
@@ -32,26 +32,41 @@ export function Home(){
         dispatch(getRecipes());
     }
 
+    function handleFilterType(e){
+        dispatch(filterByType(e.target.value))
+    }
+
+    function handleSort(e){
+        e.preventDefault();
+        dispatch(orderByName(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordered ${e.target.value}`)    
+    }
+
+    useEffect(() => {
+        dispatch(getTypes());
+    }, []);
+
     return(
         <div >
             <h1>LoveRecipe</h1>
             <button ><Link to= '/new'>new recipe</Link></button>
             <button onClick={e=> {handleClick(e)}}>Reload foods</button>
             <div>
-                <select >
+                <select onChange= {e => handleSort(e)} >
                     <option value= 'asd'>ASCENDING</option>
                     <option value= 'des'>DESCENDING</option>
                 </select>
                 <select >
-                    <option value= 'des'>LIGHTER</option>
-                    <option value= 'asd'>HEAVIER</option>
+                    <option value= 'best'>BEST</option>
+                    <option value= 'worst'>WORST</option>
                 </select>
-                {/* <select >
-                     <option name='type' key={'a'}>tipos de dietas</option>
-                     {temperaments.map((tem,i)=>(
-                         <option name='types'key={i} value={tem.name}>{tem.name}</option>
+                <select onChange={(e)=>handleFilterType(e)}>
+                     <option name='type' key={'a'}>TypeDiets</option>
+                     {types.map((d,i)=>(
+                         <option name='types'key={i} value={d.name}>{d.name}</option>
                      ))}
-                 </select> */}
+                 </select>
                 <select >
                     <option value= 'recipes'>todas</option>
                     <option value= 'created'>news</option>
@@ -67,11 +82,11 @@ export function Home(){
                <div className={`${styles.cards}`} >
  
                 { !loading ? currentRecipe.map(recipe=>{
-                    console.log('onerecipe', recipe);
+                    // console.log('onerecipe', recipe);
                     return (
                         <div key={recipe.id}>
                            <Link to={`/${recipe.id}`}>
-                           <Card title={recipe.title} image={recipe.image} temp={recipe.Temperaments} id={recipe.id}
+                           <Card title={recipe.title} image={recipe.image} Diets={recipe.Diets} id={recipe.id}
                            />
                            </Link>
                        </div> 

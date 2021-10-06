@@ -11,7 +11,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async () => {
-    const apiUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=ecce4fd21f8b43138d926e3c808887b2&addRecipeInformation=true&number=100');
+    const apiUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=e4eff276af8e4779a1ef5f5f377e927f&addRecipeInformation=true&number=100');
     const apiInfo = await apiUrl.data.results.map(recipe => {
         return {
             title: recipe.title,
@@ -64,7 +64,7 @@ router.get('/recipes', async (req, res) => {
 })
 
 router.get('/types', async (req, res)=>{
-    const typesUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=ecce4fd21f8b43138d926e3c808887b2&addRecipeInformation=true&number=100')
+    const typesUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=e4eff276af8e4779a1ef5f5f377e927f&addRecipeInformation=true&number=100')
     const typesApi = typesUrl.data.results.map(el=> {if(el.diets.length===0)return el.diets=['vegan'];else return el.diets})
     
     let dietsStings= []
