@@ -61,7 +61,8 @@ export function Home(){
 
     return(
         <div >
-            <h1>LoveRecipe</h1>
+            
+            <h1 className={`${styles.title}`}>LoveRecipe</h1>
             <button ><Link to= '/new'>new recipe</Link></button>
             <button onClick={e=> {handleClick(e)}}>Reload foods</button>
             <div>

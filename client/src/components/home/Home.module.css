@@ -6,3 +6,11 @@
     grid-template-columns: repeat(3, 1fr);
     flex-flow: wrap-reverse column-reverse ;
 }
+
+.title{
+    font-family: 'Lobster', cursive;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    right: -20px;
+}
