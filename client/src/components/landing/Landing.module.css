@@ -6,3 +6,27 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+
+  .title{
+    font-family: 'Lobster', cursive;
+    display: center;
+    justify-content: center;
+    align-items: center;
+    /* justify-content: flex-start; */
+    /* position: relative; */
+    /* right: -50px; */
+    font-size: 1000%; 
+    color: rgb(233, 151, 0);
+  } 
+
+  .welcome{
+    font-family: 'Lobster', cursive;
+    display: center;
+    justify-content: center;
+    align-items: center;
+    /* justify-content: flex-start; */
+    /* position: relative; */
+    /* right: -50px; */
+    font-size: 400%; 
+    color: rgb(233, 151, 0);
+  } 

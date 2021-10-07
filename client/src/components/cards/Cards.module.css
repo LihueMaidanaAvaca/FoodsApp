@@ -1,0 +1,8 @@
+.title{
+    font-family: 'Lobster', cursive;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* right: -50px; */
+    font-size: 110% 
+}

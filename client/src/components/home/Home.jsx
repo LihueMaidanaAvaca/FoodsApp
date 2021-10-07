@@ -62,10 +62,11 @@ export function Home(){
     return(
         <div >
             
-            <h1 className={`${styles.title}`}>LoveRecipe</h1>
-            <button ><Link to= '/new'>new recipe</Link></button>
-            <button onClick={e=> {handleClick(e)}}>Reload foods</button>
-            <div>
+            <h1 onClick={e=> {handleClick(e)}} className={`${styles.title}`}>LoveRecipe</h1>
+            <div className={styles.conteiner} >
+            <SearchBar/>
+            <button ><Link to= '/new'>New Recipe</Link></button>
+            <button onClick={e=> {handleClick(e)}}>Reload Foods</button>
                 <select onChange= {e => handleSort(e)} >
                     <option value= 'asd'>ASCENDING</option>
                     <option value= 'des'>DESCENDING</option>
@@ -85,12 +86,12 @@ export function Home(){
                     <option value= 'created'>news</option>
                     <option value= 'api'>api</option>
                 </select>
-                <SearchBar/>
-                <Paginate
-                recipesPerPage= {recipesPerPage}
-                recipes={recipes.length}
-                paginate= {paginate}
-                />  
+            </div>
+                   <Paginate
+                   recipesPerPage= {recipesPerPage}
+                   recipes={recipes.length}
+                   paginate= {paginate}
+                   />  
  
                <div className={`${styles.cards}`} >
  
@@ -107,7 +108,6 @@ export function Home(){
                      }):<p>Loading...</p>
                  }
                  </div>
-            </div>
         </div>
         
         )

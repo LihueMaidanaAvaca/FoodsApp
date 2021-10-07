@@ -8,9 +8,11 @@ export function Landing(){
     return(
         <div className={styles.landing}>
             <div >
-            <label > LoveRecipes </label>
-            {console.log()}
-            <Link  to={'/home'} >Welcome</Link>
+            <label className={styles.title}> LoveRecipes </label>
+            <div>
+            <Link  className={styles.welcome} to={'/home'} >Welcome</Link>
+
+            </div>
             </div>
         </div>
     )
