@@ -33,9 +33,8 @@ export default function Detail(props){
                 <div>
                     <h1>{myRecipe[0].title} </h1>
                     <img src={myRecipe[0].image} width="400px" height="400px" />
-                    {/* <h2>weightmin:{myRecipe[0].weightmin} </h2> */}
-                    {/* <h2>weightmax:{myRecipe[0].weightmax} </h2> */}
-                    <label>Types: {myRecipe[0].Diets.map(el=> el.name)} </label>
+                    <h3> {myRecipe[0].steps} </h3>
+                    <h3>Types: {myRecipe[0].Types.map(el=> el.name)} </h3>
                     </div> :<p>Loading...</p>
             }
         </div>

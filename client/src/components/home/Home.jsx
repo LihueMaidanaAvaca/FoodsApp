@@ -60,31 +60,33 @@ export function Home(){
     }, []);
 
     return(
-        <div >
+        <div className={styles.every}>
             
-            <h1 onClick={e=> {handleClick(e)}} className={`${styles.title}`}>LoveRecipe</h1>
+            <header onClick={e=> {handleClick(e)}} className={`${styles.title}`}> LoveRecipe</header>
             <div className={styles.conteiner} >
-            <SearchBar/>
-            <button ><Link to= '/new'>New Recipe</Link></button>
-            <button onClick={e=> {handleClick(e)}}>Reload Foods</button>
-                <select onChange= {e => handleSort(e)} >
+            <SearchBar />
+            <button className={styles.opcions} ><Link to= '/new'>New Recipe</Link></button>
+            <button className={styles.opcions} onClick={e=> {handleClick(e)}}>Reload Foods</button>
+                <select className={styles.opcions} defaultValue='default' onChange= {e => handleSort(e)} >
+                <option value='default' disabled='disabled'>ABC ORDER</option>
                     <option value= 'asd'>ASCENDING</option>
                     <option value= 'des'>DESCENDING</option>
                 </select>
-                <select onChange= {e => handleSortScore(e)}>
-                    <option value= 'asd'>BEST</option>
-                    <option value= 'des'>WORST</option>
+                <select className={styles.opcions} defaultValue='default' onChange= {e => handleSortScore(e)}>
+                <option value='default' disabled='disabled'>HEALTH ORDER</option>
+                    <option value= 'des'>BEST</option>
+                    <option value= 'asd'>WORST</option>
                 </select>
-                <select onChange={(e)=>handleFilterType(e)}>
-                     <option name='type' key={'a'}>TypeDiets</option>
+                <select className={styles.opcions} defaultValue='default' onChange={(e)=>handleFilterType(e)}>
+                     <option value='default' disabled='disabled' name='type' key={'a'} >TYPESDIETS</option>
                      {types.map((d,i)=>(
                          <option name='types'key={i} value={d.name}>{d.name}</option>
-                     ))}
+                         ))}
                  </select>
-                <select onChange={(e)=>handleFilterCreated(e)}>
-                    <option value= 'recipes'>Alls</option>
-                    <option value= 'created'>news</option>
-                    <option value= 'api'>api</option>
+                <select className={styles.opcions} onChange={(e)=>handleFilterCreated(e)}>
+                    <option value= 'recipes'>ALLS</option>
+                    <option value= 'created'>NEWS</option>
+                    <option value= 'api'>NOTNEWS</option>
                 </select>
             </div>
                    <Paginate
@@ -92,15 +94,15 @@ export function Home(){
                    recipes={recipes.length}
                    paginate= {paginate}
                    />  
- 
                <div className={`${styles.cards}`} >
  
-                { !loading ? currentRecipe.map(recipe=>{
+                { !loading ? currentRecipe?.map(recipe=>{
                     // console.log('onerecipe', recipe);
                     return (
                         <div key={recipe.id}>
                            <Link to={`/${recipe.id}`}>
-                           <Card title={recipe.title} image={recipe.image} Diets={recipe.Diets} id={recipe.id}
+                           <Card title={recipe.title} image={recipe.image} Diets={recipe.Types} id={recipe.id}
+                                 score={recipe.healthScore} steps={recipe.steps}
                            />
                            </Link>
                        </div> 
@@ -108,6 +110,7 @@ export function Home(){
                      }):<p>Loading...</p>
                  }
                  </div>
+ 
         </div>
         
         )

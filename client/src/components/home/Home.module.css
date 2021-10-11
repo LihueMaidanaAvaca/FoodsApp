@@ -1,24 +1,39 @@
+.every{
+    background-color: blueviolet;
+}
+
 .cards{
     display: grid;
     flex-direction: column;
     flex-wrap: wrap;
-    grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(10px,1fr));
     grid-template-columns: repeat(3, 1fr);
-    flex-flow: wrap-reverse column-reverse ;
-    border: 1px;
+    background-color: rgba(206, 211, 216, 0.46);
+    
 }
 
 .title{
+    background-color: rgb(25, 91, 177);
     font-family: 'Lobster', cursive;
+    color: rgb(255, 160, 18);
     display: flex;
     justify-content: flex-start;
     position: relative;
-    right: -50px;
+    margin-top: 0%;
+    margin-bottom: 1%;
+    /* right: -50px; */
     font-size: 400% 
 }
 
 .conteiner{
+    background-color: blue;
     float: left;
     display: flex;
     flex-direction: column;
+}
+
+.opcions{
+    font-family: 'Lobster', cursive;
+    display: flex;
+    align-items: center;
 }

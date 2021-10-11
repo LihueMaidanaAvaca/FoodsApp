@@ -9,6 +9,9 @@ function validate(input){
     if(!input.title){
         errors.title = 'Name is require';
     }
+    if(!input.summary){
+        errors.summary = 'Put 1 to 100';
+    }
     return errors;
 }
 
@@ -84,7 +87,7 @@ export default function NewRecipe(){
 
     return(
         <div>
-            <Link to= '/home'><button>Home</button></Link>
+            <Link to= '/home' ><button>Home</button></Link>
             <h1>NewRecipe!</h1>
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <div>
@@ -101,7 +104,7 @@ export default function NewRecipe(){
                 </div>
                 <div>
                     <label>Score:</label>
-                    <input type= "number" value= {(input.score)} name= "score" onChange={(e)=>handleChange(e)}/>
+                    <input type= "number"  value= {(input.score)} name= "score" onChange={(e)=>handleChange(e)}/>
                 </div>
                 <div>
                     <label>healthScore:</label>

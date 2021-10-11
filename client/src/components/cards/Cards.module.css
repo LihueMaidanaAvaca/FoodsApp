@@ -1,8 +1,26 @@
+
+.card {
+    background-color: rgba(0, 110, 255, 0.123);
+    border-radius: 90px 90px 90px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(255, 174, 0, 0.39) 0px -3px 5px; */
+    
+}
+
 .title{
     font-family: 'Lobster', cursive;
     display: flex;
-    justify-content: center;
-    position: relative;
+    justify-content: flex-start;
+    position: static;
     /* right: -50px; */
-    font-size: 110% 
+    font-size: 150%
+     
+}
+.diets {
+    display: flex;
+    text-align: justify;
+    /* float: left; */
+}
+
+.image{
+    float: left;
 }

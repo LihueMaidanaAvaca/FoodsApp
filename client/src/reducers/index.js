@@ -23,7 +23,7 @@ const initialState = {
       case FILTER_BY_TYPE:
             const allRecipes = state.allRecipes
             
-            const typeFilter = action.payload === 'types' ? allRecipes :  allRecipes.filter(el => {const aux = el.Diets?.map(e=> e.name)
+            const typeFilter = action.payload === 'types' ? allRecipes :  allRecipes.filter(el => {const aux = el.Types?.map(e=> e.name)
                 if (aux?.includes(action.payload)) return el;});
             
             
@@ -53,19 +53,19 @@ const initialState = {
               }  
       case ORDER_BY_SCORE:
               let sortedSArr = action.payload === 'asd' ? state.recipes.sort(function (a, b){
-                  if(a.score > b.score){
+                  if(a.healthScore > b.healthScore){
                       return 1;
                   }
-                  if(b.score > a.score){
+                  if(b.healthScore > a.healthScore){
                       return -1;
                   }
                   return 0;
                 }) :
                 state.recipes.sort(function (a, b){
-                  if(a.score > b.score){
+                  if(a.healthScore > b.healthScore){
                     return -1;
                   }
-                  if(b.score > a.score){
+                  if(b.healthScore > a.healthScore){
                     return 1;
                   }
                   return 0

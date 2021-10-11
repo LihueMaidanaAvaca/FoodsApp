@@ -1,6 +1,7 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
+const { API_KEY } = process.env;
 const axios = require ('axios')
 const { Recipe, Type } = require ('../db')
 
@@ -11,13 +12,14 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 const getApiInfo = async () => {
-    const apiUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=2a87d95c59ae4b4499c4058297d8539b&addRecipeInformation=true&number=100');
+    
+    const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=636d5e8f27534d22b3584174be44a00b&addRecipeInformation=true&number=100`);
     const apiInfo = await apiUrl.data.results.map(recipe => {
         return {
             title: recipe.title,
             id: recipe.id,
             created: false,
-            Diets: recipe.diets.map((diet) => {return { name: diet };}),
+            Types: recipe.diets.map((diet) => {return { name: diet };}),
             dishTypes: recipe.dishTypes,
             healthScore: recipe.healthScore,
             score: parseInt(recipe.spoonacularScore),
@@ -64,7 +66,7 @@ router.get('/recipes', async (req, res) => {
 })
 
 router.get('/types', async (req, res)=>{
-    const typesUrl = await axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=2a87d95c59ae4b4499c4058297d8539b&addRecipeInformation=true&number=100')
+    const typesUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=636d5e8f27534d22b3584174be44a00b&addRecipeInformation=true&number=100`)
     const typesApi = typesUrl.data.results.map(el=> {if(el.diets.length===0)return el.diets=['vegan'];else return el.diets})
     
     let dietsStings= []
@@ -128,3 +130,18 @@ router.post('/recipe', async (req, res) =>{
 
 module.exports = router;
 
+// router.put('/:breedId', (req, res) => {});
+
+// //PUT
+// //////////////////////////////////////////////////////////////////////////////////
+// //DELETE
+
+// router.delete('/:breedId', (req, res, next) => {
+//     const {breedId} = req.params;
+//     try {
+//         Dog.destroy({where: {id: breedId}});
+//         res.sendStatus(200);
+//     } catch (err) {
+//         next(err);
+//     }
+// });
