@@ -9,8 +9,10 @@ export default function Card({title, image, Diets, score}) {
             <img src={image} className={style.image} alt="img not found" width="150px" height="150px" />
             <h3>HEALTH:{score} </h3>
                         
-        
-            {Diets?.map(t=> <div key={t.name} className={style.diets}>{t.name}</div>)}
+            <h4>Type Diet
+            {Diets?.map(t=> <li key={t.name} className={style.diets}>{t.name}</li>)}
+
+            </h4>
            
         </div>
     )

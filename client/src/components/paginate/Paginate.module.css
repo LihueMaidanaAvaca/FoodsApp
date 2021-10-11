@@ -7,6 +7,18 @@
     cursor: pointer;
     align-items: flex-start;
     margin-right: 0px;
+    padding: 10px;
+    font-size: 24px;
+    color: #fff;
+    background: linear-gradient(0deg, #b9990c4d 0%, #fae20e4f 100%);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 9px #b8941e;
+    text-decoration: none;
+}
+
+.paginate:hover{
+    color: aliceblue;
 }
 
 /* .paginate {

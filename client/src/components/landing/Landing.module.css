@@ -1,19 +1,19 @@
 .landing {
     
   position: relative;
-    height: 100vh;
-    width: 100vw;background: rgb(22, 57, 104) url(landing.jpg);
+    
+    background: rgb(22, 57, 104) url(landing.jpg);
     height: 100vh;
     width: 100vw;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: auto;
+    /* padding: auto; */
   }
 
   .title{
     font-family: 'Lobster', cursive;
-    display: center;
+    display: flex;
     justify-content: center;
     align-items: center;
     /* justify-content: flex-start; */
@@ -26,15 +26,20 @@
 
   .welcome{
     font-family: 'Lobster', cursive;
-    display: center;
+    display: flex;
     justify-content: center;
-    align-items: center;
+    text-align: center;
     /* justify-content: flex-start; */
     /* position: relative; */
     /* right: -50px; */
     font-size: 400%; 
     color: rgb(233, 151, 0);
-    background-color: rgba(240, 248, 255, 0.212);
-    margin-top: 150%;
-    border-radius: 1000px 1000px 1000px;
+    /* background-color: rgba(240, 248, 255, 0.212); */
+    margin-top: 5%;
+    border-radius: 100px 100px 100px;
   } 
+
+  .welcome:hover{
+    color: aliceblue;
+    transform: translateY(3px);
+  }

@@ -62,9 +62,10 @@ export function Home(){
     return(
         <div className={styles.every}>
             
-            <header onClick={e=> {handleClick(e)}} className={`${styles.title}`}> LoveRecipe</header>
+            <header onClick={e=> {handleClick(e)}} className={`${styles.title}`}> LoveRecipe
+            <SearchBar className={styles.search} />
+            </header>
             <div className={styles.conteiner} >
-            <SearchBar />
             <button className={styles.opcions} ><Link to= '/new'>New Recipe</Link></button>
             <button className={styles.opcions} onClick={e=> {handleClick(e)}}>Reload Foods</button>
                 <select className={styles.opcions} defaultValue='default' onChange= {e => handleSort(e)} >
@@ -94,7 +95,7 @@ export function Home(){
                    recipes={recipes.length}
                    paginate= {paginate}
                    />  
-               <div className={`${styles.cards}`} >
+               <div className={styles.cards} >
  
                 { !loading ? currentRecipe?.map(recipe=>{
                     // console.log('onerecipe', recipe);

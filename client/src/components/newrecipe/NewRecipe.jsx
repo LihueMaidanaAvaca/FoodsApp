@@ -10,7 +10,10 @@ function validate(input){
         errors.title = 'Name is require';
     }
     if(!input.summary){
-        errors.summary = 'Put 1 to 100';
+        errors.summary = 'Write a little description';
+    }
+    if(!input.score || input.score < 0 || input.score > 100){
+        errors.score = 'Put 0 to 100';
     }
     return errors;
 }
@@ -101,10 +104,16 @@ export default function NewRecipe(){
                 <div>
                     <label>Summary:</label>
                     <input type= "text" value= {input.summary} name= "summary" onChange={(e)=>handleChange(e)}/>
+                    {errors.summary && (
+                    <p className='error'>{errors.summary}</p>
+                    )}
                 </div>
                 <div>
                     <label>Score:</label>
                     <input type= "number"  value= {(input.score)} name= "score" onChange={(e)=>handleChange(e)}/>
+                    {errors.score && (
+                    <p className='error'>{errors.score}</p>
+                    )}
                 </div>
                 <div>
                     <label>healthScore:</label>
@@ -129,7 +138,7 @@ export default function NewRecipe(){
                 <button type='submit' >Save!</button>
             </form>
             {input.types.map((el,i)=>
-                <div className='divTem'key={i}>
+                <div className='divType'key={i}>
                     <p>{el}</p>
                     {console.log('este es el imput', input)}
                     <button className="botonX" onClick={()=> handleDelete(el)}>x</button>
