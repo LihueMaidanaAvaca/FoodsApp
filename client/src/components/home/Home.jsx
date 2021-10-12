@@ -62,7 +62,7 @@ export function Home(){
     return(
         <div className={styles.every}>
             
-            <header onClick={e=> {handleClick(e)}} className={`${styles.title}`}> LoveRecipe
+            <header onClick={e=> {handleClick(e)}} className={`${styles.title}`}> LoveRecipe 
             <SearchBar className={styles.search} />
             </header>
             <div className={styles.conteiner} >

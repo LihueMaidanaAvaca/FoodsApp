@@ -14,12 +14,15 @@ export const GET_DETAILS = 'GET_DETAILS'
 
 export function getRecipes() {
     return async function(dispatch){
-        var json = await axios("http://localhost:3001/recipes");
-        console.log('action', json.data)
-        return dispatch({
-            type: GET_RECIPES,
-            payload: json.data
-        })
+        try{
+            
+            var json = await axios("http://localhost:3001/recipes");
+            console.log('action', json.data)
+            return dispatch({
+                type: GET_RECIPES,
+                payload: json.data
+            })
+        } catch{console.log('error en la api')}
     }
 }
 
@@ -48,13 +51,16 @@ export function setFilterName(name){
 
 export function getTypes(){
     return async function (dispatch) {
-        var info = await axios("http://localhost:3001/types", {
+        try{
 
-        });
-        return dispatch({ 
-            type: GET_TYPES,
-            payload: info.data
-        })
+            var info = await axios("http://localhost:3001/types", {
+                
+            });
+            return dispatch({ 
+                type: GET_TYPES,
+                payload: info.data
+            })
+        }catch{console.log('error api type')}
     }
 }
 

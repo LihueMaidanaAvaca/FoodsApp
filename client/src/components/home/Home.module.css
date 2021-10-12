@@ -1,7 +1,8 @@
 .every{
-    background-color: rgb(7, 56, 146);
+    /* background-color: rgb(7, 56, 146); */
     background-image: url(burgerbackgound.jpg);
     background-position:bottom;
+    background-color: rgba(0, 0, 0, 0.857);
 }
 
 .cards{
@@ -10,7 +11,7 @@
     flex-wrap: wrap;
     grid-template-columns: repeat(auto-fill, minmax(10px,1fr));
     grid-template-columns: repeat(3, 1fr);
-    background-color: rgba(214, 216, 206, 0.46);
+    /* background-color: rgba(214, 216, 206, 0.46); */
     /* background-image: url(https://virtualbackgrounds.site/wp-content/uploads/2020/09/ratatouille-gusteaus-kitchen-countertop.jpeg); */
 }
 
@@ -26,11 +27,11 @@
     margin-top: 0%;
     margin-bottom: 1%;
     /* right: -50px; */
-    font-size: 400% 
+    font-size: 300% 
 }
 
 .conteiner{
-    background-color: rgba(0, 0, 255, 0.2);
+    /* background-color: rgba(0, 0, 255, 0.2); */
     float: left;
     display: flex;
     flex-direction: column;

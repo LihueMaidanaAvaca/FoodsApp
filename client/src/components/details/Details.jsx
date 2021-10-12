@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../../actions";
 import { useEffect, useState } from "react";
-
+import style from "./Details.module.css"
 
 export default function Detail(props){
     console.log(props)
@@ -23,7 +23,7 @@ export default function Detail(props){
     }, [myRecipe])
     
     return (
-        <div>          
+        <div className={style.back} >          
             
             <Link to= '/home'>
                 <button>Home</button>
