@@ -18,11 +18,22 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { Type, conn } = require('./src/db.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
+
+    let dietsStings= ['dairy free','gluten free','pescatarian','whole 30','lacto ovo vegetarian','primal','fodmap friendly','vegan','paleolithic']
+
+    dietsStings.forEach(diet => {
+      Type.bulkCreate({
+          where: { name: diet}
+      })
+  })
+  
+  
+
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

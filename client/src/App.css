@@ -1,12 +1,15 @@
 .App {
-  text-align: center;
-  /* background-image: url(burgerbackgound.jpg); */
-  
-  /* background-color: blue; */
-
-    /* background-position: center; */
-    /* background-color: rgb(17, 50, 156); */
-
+  /* padding-top: 200px;
+    background-image: url('detailss.jpg'); 
+    height: 100vh;
+    width: 100vw; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;  
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    overflow: hidden; */
 }
 
 .App-logo {
