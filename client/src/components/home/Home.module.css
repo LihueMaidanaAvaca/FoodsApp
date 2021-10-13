@@ -1,8 +1,15 @@
 .every{
     /* background-color: rgb(7, 56, 146); */
     background-image: url(burgerbackgound.jpg);
-    background-position:bottom;
+    background-position: bottom;
     background-color: rgba(0, 0, 0, 0.857);
+    overflow: hidden;
+    background-position: center; 
+    /* width: 100vw; */
+  height: 170vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .cards{
@@ -44,14 +51,14 @@
     width: 100%;
     padding: 10px;
     font-size: 24px;
-    color: #fff;
+    color: rgb(208, 13, 13);
     background: linear-gradient(0deg, #b9990c4d 0%, #fae20e4f 100%);
     border: none;
     border-radius: 20px;
     box-shadow: 0 9px #b8941e;
     /* text-decoration: none; */
     margin-top: 10%;
-    
+    cursor: pointer;
 }
 
 .search{

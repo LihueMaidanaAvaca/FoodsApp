@@ -1,7 +1,7 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const { API_KEY } = '002c57042deb4cfab7d1ff703ef28d18';
+const { API_KEY } = '636d5e8f27534d22b3584174be44a00b';
 const axios = require ('axios')
 const { Recipe, Type } = require ('../db')
 
@@ -13,22 +13,24 @@ const router = Router();
 
 const getApiInfo = async () => {
     
-    const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=19022f25000d41f9b5b20fa4efc787e1&addRecipeInformation=true&number=100`);
-    const apiInfo = await apiUrl.data.results.map(recipe => {
-        return {
-            title: recipe.title,
-            id: recipe.id,
-            created: false,
-            Types: recipe.diets.map((diet) => {return { name: diet };}),
-            dishTypes: recipe.dishTypes,
-            healthScore: recipe.healthScore,
-            score: parseInt(recipe.spoonacularScore),
-            summary: recipe.summary,
-            image: recipe.image,
-            steps: recipe.analyzedInstructions.map((r) => r.steps.map((s) => s.step)).flat(2).join(""),
-        };
-    });
-    return apiInfo;
+
+        const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=979f0e41cfab4c3cbcea41ac704fd7a4&addRecipeInformation=true&number=100`);
+        const apiInfo = await apiUrl.data.results.map(recipe => {
+            return {
+                title: recipe.title,
+                id: recipe.id,
+                created: false,
+                Types: recipe.diets.map((diet) => {return { name: diet };}),
+                dishTypes: recipe.dishTypes,
+                healthScore: recipe.healthScore,
+                score: parseInt(recipe.spoonacularScore),
+                summary: recipe.summary,
+                image: recipe.image,
+                steps: recipe.analyzedInstructions.map((r) => r.steps.map((s) => s.step)).flat(2).join(""),
+            };
+        });
+        return apiInfo;
+    
 };
 
 const getDbInfo = async () => {
@@ -66,21 +68,23 @@ router.get('/recipes', async (req, res) => {
 })
 
 router.get('/types', async (req, res)=>{
-    
-    const typesUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=19022f25000d41f9b5b20fa4efc787e1&addRecipeInformation=true&number=100`)
-    const typesApi = typesUrl.data.results.map(el=> {if(el.diets.length===0)return el.diets=['vegan'];else return el.diets})
-    
-    let dietsStings= []
-    const dietEach = typesApi.map(diet => {
-        for (let i = 0; i < diet.length; i++) dietsStings.push(diet[i])})
-                        
-    dietsStings.forEach(diet => {
-        Type.findOrCreate({
-            where: { name: diet}
-        })
-    })
-    const allDiets = await Type.findAll();
-    res.send(allDiets);    
+  
+        
+        // const typesUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=979f0e41cfab4c3cbcea41ac704fd7a4&addRecipeInformation=true&number=100`)
+        // const typesApi = typesUrl.data.results.map(el=> {if(el.diets.length===0)return el.diets=['vegan'];else return el.diets})
+        
+        let dietsStings= ['dairy free','gluten free','pescatarian','whole 30','lacto ovo vegetarian','primal','fodmap friendly','vegan','paleolithic', 'ketogenic']
+        // const dietEach = typesApi.map(diet => {
+        //     for (let i = 0; i < diet.length; i++) dietsStings.push(diet[i])})
+            
+            dietsStings.forEach(diet => {
+                Type.findOrCreate({
+                    where: { name: diet}
+                })
+            })
+            const allDiets = await Type.findAll();
+            res.send(allDiets);    
+        
 })
 
 router.get('/recipes/:id', async (req, res)=>{

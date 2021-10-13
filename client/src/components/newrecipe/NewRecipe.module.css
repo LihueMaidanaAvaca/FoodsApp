@@ -1,0 +1,38 @@
+.every{
+    background-image: url(listfood.jpg);
+    height: 100vh;
+    width: 100vw; 
+    background-size: cover; 
+    background-position: center; 
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* overflow: hidden; */
+}
+
+.title{
+    margin-top: 50px;
+    margin-left: 840px;
+    font-family: 'Lobster', cursive;
+    font-size: 400%;
+}
+
+.form{
+    margin-left: 800px;
+    margin-top: -3%;
+}
+
+.label{
+    font-family: 'Lobster', cursive;
+    font-size:larger;    
+
+}
+
+.largetext{
+    height: 200%;
+    width: 0%;
+}
+
+.checks{
+    margin-right: 30%;
+}
