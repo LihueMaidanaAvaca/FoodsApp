@@ -7,9 +7,9 @@ export default function Card({title, image, Diets, score}) {
             
             <h3 className={style.title}>{title}</h3>
             <img src={image} className={style.image} alt="img not found" width="150px" height="150px" />
-            <h3>HEALTH:{score} </h3>
+            <h3 className={style.words}>HEALTH:{score} </h3>
                         
-            <h4>Type Diet
+            <h4 className={style.words}>Type Diet
             {Diets?.map(t=> <li key={t.name} className={style.diets}>{t.name}</li>)}
 
             </h4>

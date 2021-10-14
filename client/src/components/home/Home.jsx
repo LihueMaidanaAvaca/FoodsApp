@@ -66,8 +66,8 @@ export function Home(){
             <SearchBar className={styles.search} />
             </header>
             <div className={styles.conteiner} >
-            <button className={styles.opcions} ><Link to= '/new'>New Recipe</Link></button>
-            <button className={styles.opcions} onClick={e=> {handleClick(e)}}>Reload Foods</button>
+            <Link to= '/new' className={styles.newre}>New Recipe</Link>
+            <button className={styles.opcions} onClick={e=> handleClick(e)}>Reload Foods</button>
                 <select className={styles.opcions} defaultValue='default' onChange= {e => handleSort(e)} >
                 <option value='default' disabled='disabled'>ABC ORDER</option>
                     <option value= 'asd'>ASCENDING</option>
