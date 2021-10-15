@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const { Router, response } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const { API_KEY } = '636d5e8f27534d22b3584174be44a00b';
@@ -14,7 +14,7 @@ const router = Router();
 const getApiInfo = async () => {
     
 
-        const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f513d37f47cd48469fb1dce1df1835d8&addRecipeInformation=true&number=100`);
+        const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=19022f25000d41f9b5b20fa4efc787e1&addRecipeInformation=true&number=100`);
         const apiInfo = await apiUrl.data.results.map(recipe => {
             return {
                 title: recipe.title,
@@ -33,28 +33,29 @@ const getApiInfo = async () => {
     
 };
 
-const getApiInfo2 = async () => {
+// const getApiInfo2 = () => {
     
 
-    const apiInfo = axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=f513d37f47cd48469fb1dce1df1835d8&addRecipeInformation=true&number=100`)
-    .then(data => {data?.results.map(recipe => {
-        return {
-            title: recipe.title,
-            id: recipe.id,
-            created: false,
-            Types: recipe.diets.map((diet) => {return { name: diet };}),
-            dishTypes: recipe.dishTypes,
-            healthScore: recipe.healthScore,
-            score: parseInt(recipe.spoonacularScore),
-            summary: recipe.summary,
-            image: recipe.image,
-            steps: recipe.analyzedInstructions.map((r) => r.steps.map((s) => s.step)).flat(2).join(""),
-        };
-    })})
-    // console.log('fetch', data)
-    return apiInfo;
+//     const apiInfo = axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=979f0e41cfab4c3cbcea41ac704fd7a4&addRecipeInformation=true&number=1`)
+//     .then(response => console.log('response',response.data.results))
+//     .then(response => {response.data.results?.map(recipe => {
+//         return {
+//             title: recipe.title,
+//             id: recipe.id,
+//             created: false,
+//             Types: recipe.diets.map((diet) => {return { name: diet };}),
+//             dishTypes: recipe.dishTypes,
+//             healthScore: recipe.healthScore,
+//             score: parseInt(recipe.spoonacularScore),
+//             summary: recipe.summary,
+//             image: recipe.image,
+//             steps: recipe.analyzedInstructions.map((r) => r.steps.map((s) => s.step)).flat(2).join(""),
+//         };
+//     })})
+//     console.log('fetch', data)
+//     return apiInfo;
 
-};
+// };
 
 
 const getDbInfo = async () => {

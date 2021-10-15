@@ -26,18 +26,18 @@ export default function Detail(props){
         <div className={style.back} >          
          <div>
             <Link to= '/home'>
-                <button>Home</button>
+                <button >Home</button>
             </Link>
             {
                 myRecipe.length>0?
                 <div className={style.megacard}>
                     <h1 className={style.title}>{myRecipe[0].title} </h1>
                     <img src={myRecipe[0].image} className={style.image} width="400px" height="400px" />
-                    <h3>HealthScore: {myRecipe[0].healthScore} </h3>
-                    <h3>Score: {myRecipe[0].score} </h3>
-                    <h3>Types: {myRecipe[0].Types.map(el=> el.name)} </h3>
-                    <h3>Steps: {myRecipe[0].steps} </h3>
-                    <h3>Summary: </h3><div dangerouslySetInnerHTML={{ __html: myRecipe[0].summary }}></div>
+                    <h2 className={style.word}>HealthScore: {myRecipe[0].healthScore} </h2>
+                    <h2 className={style.word}>Score: {myRecipe[0].score} </h2>
+                    <h2 className={style.word}>Types: {myRecipe[0].Types.map(el=> el.name)} </h2>
+                    <h3 className={style.word}>Steps: {myRecipe[0].steps} </h3>
+                    <h2 className={style.word}>Summary: </h2><div className={style.summary} dangerouslySetInnerHTML={{ __html: myRecipe[0].summary }}></div>
                     </div> :<p>Loading...</p>
             }
             </div>   

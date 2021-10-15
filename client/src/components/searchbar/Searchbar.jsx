@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from 'react'
 import { useDispatch } from "react-redux";
 import { getNameRecipes } from "../../actions";
-
+import styles from "./Searchbar.module.css"
 
 export default function SearchBar(){
     const dispatch = useDispatch()
@@ -19,7 +19,7 @@ export default function SearchBar(){
     }
 
     return (
-        <div>
+        <div className={styles.search} >
             <input
             type= 'text'
             placeholder = "Search..."

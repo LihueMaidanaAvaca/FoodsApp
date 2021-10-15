@@ -28,11 +28,17 @@
 
 }
 
-.largetext{
+/* .largetext{
     height: 200%;
     width: 0%;
-}
+} */
 
 .checks{
     margin-right: 30%;
+}
+
+.error{
+    margin-top: 0%;
+    margin-bottom: 0%;
+    color: brown;
 }

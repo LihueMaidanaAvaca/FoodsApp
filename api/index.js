@@ -19,33 +19,24 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { Type, conn } = require('./src/db.js');
+let dietsStings= ['dairy free','gluten free','pescatarian','whole 30','lacto ovo vegetarian','primal','fodmap friendly','vegan','paleolithic', 'ketogenic']
+const preCharge = async function (array){
+  try{array.forEach(diet => {
+    Type.findOrCreate({
+        where: { name: diet}
+    })
+  })}catch{console.log('no sepudio')}
+  
+}
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
 
-    let dietsStings= ['dairy free','gluten free','pescatarian','whole 30','lacto ovo vegetarian','primal','fodmap friendly','vegan','paleolithic', 'ketogenic']
-
-    dietsStings.forEach(diet => {
-      Type.bulkCreate({
-          where: { name: diet}
-      })
-  })
+  preCharge(dietsStings)
   
-  
-
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
 
-
-// // Syncing all the models at once.
-// conn.sync({ force: true }).then(() => {
-// 	server.listen(3001, () => {
-// 		//>> Importamos "dbLoad" -> carga "api" a "db"
-// 		dbLoader();
-// 		//<<
-// 		console.log('%s listening at 3001'); // eslint-disable-line no-console
-// 	});
-// });
 
