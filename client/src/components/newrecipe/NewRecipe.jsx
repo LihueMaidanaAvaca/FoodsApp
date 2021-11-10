@@ -57,20 +57,20 @@ export default function NewRecipe(){
         }))
     }
 
-    // function handleSelect(e){
-    //     setInput({
-    //         ...input,
-    //         types: [...input.types,e.target.value]
-    //     })
-    //     setErrors(validate({
-    //         ...input,
-    //         types: [...input.types,e.target.value]
-    //     }))
-    // }
+    function handleSelect(e){
+        setInput({
+            ...input,
+            types: [...input.types,e.target.value]
+        })
+        setErrors(validate({
+            ...input,
+            types: [...input.types,e.target.value]
+        }))
+    }
 
     function handleSubmit(e){
         e.preventDefault();
-        if(Object.values(errors).length > 0) alert ("Please finish the form :)")
+        if(Object.values(errors).length > 0) alert ("Please finish the form")
         else{
 
             postNewRecipe(input)
@@ -149,38 +149,27 @@ export default function NewRecipe(){
                 </div>
                 <div className={styles.checks}>
                     <label className={styles.label}>Diet:</label>
-                    <label><input type= "checkbox" value= "vegan" name= "vegan" onChange={(e)=>handleCheck(e)}/>Vegan</label>
-                    <label><input type= "checkbox" value= "gluten free" name= "gluten free" onChange={(e)=>handleCheck(e)}/>Gluten Free</label>
-                    <label><input type= "checkbox" value= "lacto ovo vegetarian" name= "lacto ovo vegetarian" onChange={(e)=>handleCheck(e)}/>Lacto Ovo Vegetarian</label>
-                    <label><input type= "checkbox" value= "dairy free" name= "dairy free" onChange={(e)=>handleCheck(e)}/>Dairy Free</label>
-                    <label><input type= "checkbox" value= "paleolithic" name= "paleolithic" onChange={(e)=>handleCheck(e)}/>Paleolithic</label>
-                    <label><input type= "checkbox" value= "pescatarian" name= "pescatarian" onChange={(e)=>handleCheck(e)}/>Pescatarian</label>
-                    <label><input type= "checkbox" value= "fodmap friendly" name= "fodmap friendly" onChange={(e)=>handleCheck(e)}/>Fodmap Friendly</label>
-                    <label><input type= "checkbox" value= "whole 30" name= "whole 30" onChange={(e)=>handleCheck(e)}/>Whole 30</label>
-                    <label><input type= "checkbox" value= "primal" name= "primal" onChange={(e)=>handleCheck(e)}/>Primal</label>
-                    <label><input type= "checkbox" value= "ketogenic" name= "ketogenic" onChange={(e)=>handleCheck(e)}/>Ketogenic</label>
-                    {/* <label><input type= "checkbox" value= "vegan" name= "vegan" onChange={(e)=>handleSelect(e)}/>Vegan</label> */}
+                    <label><input type= "checkbox" value= "vegan" name= "vegan" onChange={(e)=>handleSelect(e)}/>Vegan</label>
+                    <label><input type= "checkbox" value= "gluten free" name= "gluten free" onChange={(e)=>handleSelect(e)}/>Gluten Free</label>
+                    <label><input type= "checkbox" value= "lacto ovo vegetarian" name= "lacto ovo vegetarian" onChange={(e)=>handleSelect(e)}/>Lacto Ovo Vegetarian</label>
+                    <label><input type= "checkbox" value= "dairy free" name= "dairy free" onChange={(e)=>handleSelect(e)}/>Dairy Free</label>
+                    <label><input type= "checkbox" value= "paleolithic" name= "paleolithic" onChange={(e)=>handleSelect(e)}/>Paleolithic</label>
+                    <label><input type= "checkbox" value= "pescatarian" name= "pescatarian" onChange={(e)=>handleSelect(e)}/>Pescatarian</label>
+                    <label><input type= "checkbox" value= "fodmap friendly" name= "fodmap friendly" onChange={(e)=>handleSelect(e)}/>Fodmap Friendly</label>
+                    <label><input type= "checkbox" value= "whole 30" name= "whole 30" onChange={(e)=>handleSelect(e)}/>Whole 30</label>
+                    <label><input type= "checkbox" value= "primal" name= "primal" onChange={(e)=>handleSelect(e)}/>Primal</label>
+                    <label><input type= "checkbox" value= "ketogenic" name= "ketogenic" onChange={(e)=>handleSelect(e)}/>Ketogenic</label>
+                    
                     {errors.types && (
                     <p className={styles.error}>{errors.types}</p>
                     )}
                 </div>
-                {/* <select onChange={(e)=>handleSelect(e)}>
-                <option name='type' key={'a'}>Diets</option>
-                    {types.map((type,i)=>(
-                        <option name='types'key={i} value={type.name}>{type.name}</option>
-                    ))}
-                </select>
-                <ul><li>{input.types.map(el=> el +", ")}</li></ul> */}
+                
             <button  className={styles.label}type='submit' >Save!</button>
-            {console.log('este es el imput', input)}
+            
                 
             </form>
-            {/* {input.types.map((el,i)=>
-                <div className='divType'key={i}>
-                    <p>{el}</p>
-                    <button className="botonX" onClick={()=> handleDelete(el)}>x</button>
-                    </div>
-                    )} */}
+           
         </div>
     )
 

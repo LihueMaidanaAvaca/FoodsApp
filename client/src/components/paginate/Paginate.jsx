@@ -13,9 +13,9 @@ export default function Paginate ({recipesPerPage, recipes, paginate}){
         <nav>
             <ul className={`${styles.paginate}`}>
                 {pageNumber && pageNumber.map(num =>(
-                    <li className='paginate' key={num}>
+                    <div className='paginate' key={num}>
                     <a onClick={()=> paginate(num)}>{num}</a>
-                    </li>                
+                    </div>                
                 ))}
             </ul>
         </nav>
